@@ -128,7 +128,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS_PATTERN = config('CORS_ALLOWED_ORIGINS_PATTERN', default='http://localhost:3000')
+CORS_ALLOWED_ORIGINS = [config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
