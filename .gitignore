@@ -29,9 +29,6 @@ env/
 # Logs
 *.log
 
-# Django migrations
-**/migrations/
-
 # Docker
 docker-compose.yml
 docker-compose.override.yml
