@@ -128,7 +128,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000')]
+DJANGO_ENV = config('DJANGO_ENV', default='development')
+
+if DJANGO_ENV == 'production':
+    CORS_ALLOWED_ORIGINS_PATTERN = config('CORS_ALLOWED_ORIGINS_PATTERN', default=r'^https:\/\/app-frontend-prueba-.*\.vercel\.app$')
+else:
+    CORS_ALLOWED_ORIGINS_PATTERN = 'http://localhost:3000'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
