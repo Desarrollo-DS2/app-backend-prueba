@@ -27,7 +27,10 @@ jobs:
     - name: Set up environment variables
       env:
         DJANGO_ENV: ${{ secrets.DJANGO_ENV }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DJANGO_DEBUG: True
       run: |
+        echo "DATABASE_URL=${DATABASE_URL}" >> $GITHUB_ENV
         echo "DJANGO_ENV=${DJANGO_ENV}" >> $GITHUB_ENV
 
     - name: Run tests
