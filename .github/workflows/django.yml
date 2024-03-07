@@ -28,6 +28,7 @@ jobs:
     - name: Set up environment variables
       run: |
         echo "DATABASE_URL=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB" >> $GITHUB_ENV
+        echo "DJANGO_ENV=development" >> $GITHUB_ENV
     - name: Run Tests
       run: |
         python manage.py test
