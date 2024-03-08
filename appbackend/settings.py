@@ -80,11 +80,21 @@ WSGI_APPLICATION = 'appbackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import dj_database_url
+
+# Resto de tus importaciones y configuraciones...
+
+# Configuración de la base de datos
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
-    )
+    ),
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    }
 }
+
 
 
 # Password validation

@@ -2,40 +2,33 @@ name: Django CI
 
 on:
   push:
-    branches: [main]
+    branches: ["master"]
   pull_request:
-    branches: [main]
+    branches: ["master"]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      db:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: dev-database
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD: root
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
 
-    - name: Build Docker image
-      run: docker-compose -f docker-compose-dev.yml build
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+    
+      - name: Run tests
+        env:
+          DATABASE_URL: "sqlite://:memory:"
+          DJANGO_ENV: "test"
+          run: echo "DJANGO_ENV=test" >> $GITHUB_ENV
 
-    - name: Start services
-      run: docker-compose -f docker-compose-dev.yml up -d
-
-    - name: Wait for database to be ready
-      run: docker-compose -f docker-compose-dev.yml exec -T db sh -c 'while ! pg_isready -q; do sleep 1; done'
-
-    - name: Run tests
-      run: docker-compose -f docker-compose-dev.yml exec web python manage.py test
+        run: |
+          python manage.py test
