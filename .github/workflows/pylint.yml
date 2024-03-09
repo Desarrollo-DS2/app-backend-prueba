@@ -20,6 +20,9 @@ jobs:
         pip install django pylint pylint-django 
         pip install dj_database_url python-decouple
         pip install djangorestframework
+    - name: Set Django settings module
+      run: |
+        export DATABASE_URL=sqlite:///db.sqlite3
     - name: Analysing the code with pylint
       run: |
         DJANGO_SETTINGS_MODULE=appbackend.settings pylint --load-plugins pylint_django --ignore=tasks/migrations $(git ls-files '*.py')
