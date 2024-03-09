@@ -22,8 +22,8 @@ class TaskModelTestCase(TestCase):
         # Verifica que la instancia se haya creado correctamente
         self.assertEqual(task.title, "Test Task")
         self.assertEqual(task.description, "This is a test task.")
-        self.assertFalse(task.completed)  
-
+        self.assertFalse(task.completed)
+        
     def test_task_str_representation(self):
         """
         Prueba la representación de cadena de una tarea.
