@@ -23,4 +23,4 @@ jobs:
         DJANGO_SETTINGS_MODULE: appbackend.settings
     - name: Analysing the code with pylint
       run: |
-        pylint --load-plugins pylint_django $(git ls-files '*.py')
+        pylint --load-plugins pylint_django --ignore="*tasks/migrations/*" $(git ls-files '*.py')
