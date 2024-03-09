@@ -22,4 +22,4 @@ jobs:
         pip install djangorestframework
     - name: Analysing the code with pylint
       run: |
-        pylint --load-plugins pylint_django --ignore=tasks/migrations $(git ls-files '*.py')
+        pylint --load-plugins pylint_django --ignore=tasks/migrations --disable=django-not-configured $(git ls-files '*.py')
