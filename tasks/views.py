@@ -6,18 +6,18 @@ from rest_framework import generics
 from .models import Task
 from .serializer import TaskSerializer
 
-"""
-Vista para listar y crear tareas.
-"""
 
 class TaskList(generics.ListCreateAPIView):
+    """
+    Vista para listar y crear tareas.
+    """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
-"""
-Vista para ver, actualizar y eliminar tareas.
-"""
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Vista para ver, actualizar y eliminar tareas.
+    """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer

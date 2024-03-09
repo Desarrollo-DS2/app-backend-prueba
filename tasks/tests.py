@@ -10,11 +10,10 @@ Clase de pruebas para el modelo Task.
 """
 class TaskModelTestCase(TestCase):
 
-    """
-    Prueba la creación de una tarea.
-    """
     def test_task_creation(self):
-        # Crea una instancia de Task
+        """
+        Prueba la creación de una tarea.
+        """
         task = Task.objects.create(
             title="Test Task",
             description="This is a test task."
@@ -25,11 +24,11 @@ class TaskModelTestCase(TestCase):
         self.assertEqual(task.description, "This is a test task.")
         self.assertFalse(task.completed)  
 
-    """
-    Prueba la representación de cadena de una tarea.
-    """
+    
     def test_task_str_representation(self):
-        # Crea una instancia de Task
+        """
+        Prueba la representación de cadena de una tarea.
+        """
         task = Task.objects.create(
             title="Another Test Task",
             description="Another test task."
