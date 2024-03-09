@@ -16,7 +16,5 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     
-
-
 if __name__ == '__main__':
     main()
