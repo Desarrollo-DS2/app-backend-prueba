@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.11"]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -19,8 +19,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install django pylint pylint-django 
         pip install dj_database_url python-decouple
-      env:  
-        DJANGO_SETTINGS_MODULE: appbackend.settings
+    - name: Set Django settings module
+      run: |
+        export DJANGO_SETTINGS_MODULE=appbackend.settings
     - name: Analysing the code with pylint
       run: |
-        pylint --load-plugins pylint_django --ignore="*tasks/migrations/*" $(git ls-files '*.py')
+        pylint --load-plugins pylint_django --ignore="*/migrations/*",  $(git ls-files '*.py')

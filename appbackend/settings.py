@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from decouple import config
+from .settings_production import DATABASES as settings_production
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', 
-                    default='django-insecure-5z$tge7%f^s@wf^e!2^r(b)ll10)nszcvtfgmxr-7p1p&v(qlf')
+                    default='django-insecure-5z$tge7%f^s@wf^e!2^r(b)ll10)nszcvtfgmxr-7p1p&v(qlf'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
@@ -150,4 +152,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 if config('DJANGO_ENV') == 'production':
-    from .settings_production import *
+    DATABASES = settings_production.DATABASES
