@@ -1,2 +1,2 @@
 [MASTER]
-ignore=tasks/migrations
+ignore=migrations
