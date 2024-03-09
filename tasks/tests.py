@@ -1,7 +1,18 @@
+"""
+Este módulo contiene las pruebas unitarias para el modelo Task.
+"""
+
 from django.test import TestCase
 from tasks.models import Task
 
+"""
+Clase de pruebas para el modelo Task.
+"""
 class TaskModelTestCase(TestCase):
+
+    """
+    Prueba la creación de una tarea.
+    """
     def test_task_creation(self):
         # Crea una instancia de Task
         task = Task.objects.create(
@@ -12,8 +23,11 @@ class TaskModelTestCase(TestCase):
         # Verifica que la instancia se haya creado correctamente
         self.assertEqual(task.title, "Test Task")
         self.assertEqual(task.description, "This is a test task.")
-        self.assertFalse(task.completed)  # Verifica que la tarea no esté marcada como completada por defecto
+        self.assertFalse(task.completed)  
 
+    """
+    Prueba la representación de cadena de una tarea.
+    """
     def test_task_str_representation(self):
         # Crea una instancia de Task
         task = Task.objects.create(
@@ -23,7 +37,3 @@ class TaskModelTestCase(TestCase):
 
         # Verifica la representación de cadena del modelo
         self.assertEqual(str(task), "Another Test Task")
-
-
-
-    

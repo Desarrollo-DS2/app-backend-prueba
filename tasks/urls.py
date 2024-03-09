@@ -1,4 +1,7 @@
-# tasks/urls.py
+"""
+Este módulo define las URL de la aplicación de tareas.
+"""
+
 from django.urls import path
 from .views import TaskList, TaskDetail
 

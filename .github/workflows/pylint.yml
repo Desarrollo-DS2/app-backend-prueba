@@ -19,6 +19,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install django pylint pylint-django 
         pip install dj_database_url python-decouple
+        pip install djangorestframework
     - name: Set Django settings module
       run: |
         export DJANGO_SETTINGS_MODULE=appbackend.settings
