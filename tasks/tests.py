@@ -10,7 +10,6 @@ class TaskModelTestCase(TestCase):
     """
     Clase de pruebas para el modelo Task.
     """
-    
     def test_task_creation(self):
         """
         Prueba la creación de una tarea.
