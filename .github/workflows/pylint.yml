@@ -26,4 +26,4 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint pylint
-        --load-plugins=pylint_django --django-settings-module=appbackend.settings --ignore=tasks/migrations --load-plugins pylint_django $(git ls-files '*.py')
+        --load-plugins=pylint_django --ignore=tasks/migrations --load-plugins pylint_django $(git ls-files '*.py')
